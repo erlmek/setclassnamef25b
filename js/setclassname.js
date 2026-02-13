@@ -3,6 +3,7 @@ const pbSetClassName = document.getElementById("pbSetStyle");
 const inpStyleName = document.getElementById("inpStyleName");
 const pbSetTagStyle = document.getElementById("pbSetTagStyle");
 const ddAvailableStyles = document.getElementById("ddAvailableStyles");
+const pbTestFill = document.getElementById("pbTestFill");
 
 function setClassName(){
     const orgElementName = inpElementName.value;
@@ -14,7 +15,7 @@ function setClassName(){
 }
 
 function setTagStyle() {
-    const tagName = inpElementName.value;
+    const tagName = inpElementName.value; //indeholder et tag name, feks 'input' eller 'p'.
     const tags = document.getElementsByTagName(tagName);
     const tagArr = Array.from(tags);
     tagArr.forEach(elm => elm.className = inpStyleName.value)
@@ -27,6 +28,13 @@ function setTagStyleDropDown() {
     tagArr.forEach(elm => elm.className = ddAvailableStyles.value)
 }
 
+function fillAvailableStylesTest() {
+    const styleList = document.styleSheets;
+    console.log(styleList);
+    for (let sheet of styleList) {
+        console.log(sheet)
+    }
+}
 
 function fillAvailableStyles() {
     const styles = new Set();
@@ -73,6 +81,9 @@ function fillAvailableStyles() {
 pbSetClassName.addEventListener("click", setClassName)
 pbSetTagStyle.addEventListener("click", setTagStyle)
 ddAvailableStyles.addEventListener("change", setTagStyleDropDown)
+pbTestFill.addEventListener("click", fillAvailableStylesTest)
+
+
 //Har prøvet at fange event når man scroller ned igennem elementer i dropdown. Ikke lykkes.
 //ddAvailableStyles.addEventListener("input", setTagStyleDropDown)
 //ddAvailableStyles.addEventListener("focus", setTagStyleDropDown)
